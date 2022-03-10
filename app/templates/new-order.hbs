@@ -1,0 +1,24 @@
+<div><h1>Novo pedido</h1>
+    <p>Qual o nome do pedido?</p>
+    <input type="text" name="name" id="name">
+    <p>Qual o peso do pedido em gramas?</p>
+    <input type="number" name="peso" id="peso">
+    <p>Qual a largura do pedido em centimetros?</p>
+    <input type="number" name="largura" id="largura">
+    <p>Qual a altura do pedido em centimetros?</p>
+    <input type="number" name="altura" id="altura">
+    <p>Qual a profundidade do pedido em centimetros?</p>
+    <input type="number" name="profundidade" id="profundidade">
+    <p>Qual o quantos itens serão?</p>
+    <input type="number" name="quantidade" id="quantidade">
+    <p>Qual o seu CEP?</p>
+    <input type="number" name="CEP" id="CEP">
+</div>
+<div class="botao">
+    <ul class="results">
+        <p>
+            <button type="button" {{on "click" this.calculate}}>Calcular o preço total </button>
+            <button  type="button" id="add-order" {{action "calculate2"}}>Comprar</button>
+        </p>
+    </ul>
+</div>

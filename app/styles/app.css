@@ -1,0 +1,57 @@
+body, div, .button {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 0.7;
+    display: block;
+    margin: 0px;
+}
+
+.container {
+    max-width: 1024px;
+    background: rgb(249, 249, 249);
+    margin: 0px auto;
+}
+
+.menu {
+    height: 4em;
+    background-color: #ff9100;
+}
+
+.menu h1 {
+    position: relative;
+    margin: 0.5em;
+    padding: 5px 0 0 8px;
+    color: #ffffff;
+    font-size: 1.8em;
+    font-style: italic;
+}
+
+.menu a,
+.menu .create {
+  display: inline-block;
+}
+
+.menu .create{
+    padding: 0 2em;
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 0 15px;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Button */
+
+button {
+    padding: 10px 30px 10px;
+    color: rgb(0, 0, 0);
+    background: #ff9100;
+    border-radius: 5px;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.9;
+    display: inline-block;
+}
