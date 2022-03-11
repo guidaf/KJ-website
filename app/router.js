@@ -1,6 +1,5 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'kj-tabelas/config/environment';
-import { action } from '@ember/object';
 
 export default class Router extends EmberRouter {
   location = config.locationType;
@@ -12,12 +11,6 @@ Router.map(function () {
   this.route('orders');
 });
 
-export default class Tooltip extends Component {
-  @action
-  calculate() {
-    console.log('IM WORKING');
-  }
-  }
 
 
 // App.UsersRoute = Ember.Router.extend({
