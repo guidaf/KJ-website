@@ -1,0 +1,15 @@
+<div>
+    {{@codigosPorCep.length}}
+    <ul>
+        <li>{{@pedido.Nome}}</li>
+        <li>{{@pedido.Data}}</li>
+        <li>{{@pedido.Quantidade}}</li>
+        <li>preço do frete: {{this.precoDoFrete}}</li>
+        <li>status: {{this.status}}</li>
+        <li>email enviado? {{this.emailEnviado}}</li>
+    </ul>
+
+    <button {{action 'enviarEmail'}}>Enviar Email para comprador</button>
+    <button {{action 'cancelarPedido'}}>Cancelar pedido</button>
+    {{!-- <button {{action 'adicionarProduto'}}>Adicionar produto</button> --}}
+</div>

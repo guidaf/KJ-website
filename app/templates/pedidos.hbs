@@ -1,0 +1,20 @@
+{{page-title "Pedidos"}}
+
+<LinkTo @route="index" class="botao">
+    Voltar para a pagina principal
+</LinkTo>
+
+<h1>Temos {{this.QuandadeDePedidos}} novos!</h1>
+
+<button {{action 'adicionarPedido'}}>
+    Adicionar pedido
+</button>
+
+{{#each @model.pedidos as |pedido|}}
+    <PedidoCard @pedido={{pedido}} @codigosPorCep={{@model.codigosPorCep}} @precoPorCodigo={{@model.precoPorCodigo}}>
+
+    </PedidoCard>
+{{/each}}
+
+{{!-- {{#if isShowing}} --}}
+{{outlet}}

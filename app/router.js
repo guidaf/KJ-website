@@ -9,6 +9,7 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('new-order');
   this.route('orders');
+  this.route('pedidos');
 });
 
 // App.UsersRoute = Ember.Router.extend({
