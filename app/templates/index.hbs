@@ -1,9 +1,9 @@
 <div><h1>Your Orders</h1>
 <div><ul>Order1</ul></div>
 <div><ul>Order2</ul></div>
-<button type="button" {{action "toggleShowing"}}>New Order</button></div>
-
-{{!-- {{#if isShowing}} --}}
+    <Neworder/>
+    </div>
+{{!-- {{#if test === 0}} --}}
 <div class="new-order">
     <h1>New Order</h1>
     <p>What is the order name?</p>
@@ -23,10 +23,10 @@
 </div>
 <div class="botao">
     <ul class="results">
-        <p>
+         <p>
             <Botoes/>
         </p>
-    </ul>
+     </ul>
 </div>
 
 <LinkTo @route="pedidos" class="botao">
