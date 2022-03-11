@@ -1,9 +1,9 @@
 <div><h1>Your Orders</h1>
 <div><ul>Order1</ul></div>
-<ul>Order2</ul>
+<div><ul>Order2</ul></div>
 <button type="button" {{action "toggleShowing"}}>New Order</button></div>
 
-{{#if isShowing}}
+{{!-- {{#if isShowing}} --}}
 <div class="new-order">
     <h1>New Order</h1>
     <p>What is the order name?</p>
@@ -19,7 +19,7 @@
     <p>How many items will there be?</p>
     <input type="number" name="amount" id="amount">
     <p>What is your zip code?</p>
-    <input type="number" name="zip-code" id="zip-code">
+    <input type="number" name="zip_code" id="zip_code">
 </div>
 <div class="botao">
     <ul class="results">
@@ -28,4 +28,4 @@
         </p>
     </ul>
 </div>
-{{/if}}
+{{!-- {{/if}} --}}
