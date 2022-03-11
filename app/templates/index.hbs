@@ -3,7 +3,7 @@
 <ul>Order2</ul>
 <button {{action "toggleShowing"}}>New Order</button></div>
 
-{{!-- {{#if isShowing}} --}}
+{{#if isShowing}}
 <div class="new-order">
     <h1>New Order</h1>
     <p>What is the order name?</p>
@@ -24,9 +24,8 @@
 <div class="botao">
     <ul class="results">
         <p>
-            <button type="button" {{on "click" this.calculate}}>Calculate the total price </button>
-            <button  type="button" id="add-order" {{action "calculate"}}>Buy</button>
+            <Botoes/>
         </p>
     </ul>
 </div>
-{{!-- {{/if}} --}}
+{{/if}}
