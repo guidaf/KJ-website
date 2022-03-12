@@ -28,6 +28,6 @@ export default class PedidoCardComponent extends Component {
         console.log(this.args.pedido);
         console.log(this.args.codigosPorCep);
 
-        return 10
+        return 123 //Apenas o Preço do frete deve ser enviado para cá
     }
 }

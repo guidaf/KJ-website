@@ -9,8 +9,8 @@ export default class PedidosController extends Controller {
   @action
   adicionarPedido() {
     this.model.pedidos.pushObject({
-      Produto: '',
-      Data: 'aknsakdjf',
+      Produto: 'Produto 1',
+      Data: '2/2/22',
       Quantidade: 0,
       PesoDoProduto: 0,
       Valor: 0,
