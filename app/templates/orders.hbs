@@ -1,11 +1,11 @@
 <div class="Title">
     <h1>Seus Pedidos:</h1>
-    <button class="NewOrder" {{action "show"}}>New Order</button>
+    <button class="NewOrder" type="button" {{action "show"}}>New Order</button>
 </div>
 
 
 {{#each @model.pedidos as |pedido|}}
-    <PedidoCard @pedido={{pedido}} @codigosPorCep={{@model.codigosPorCep}} @precoPorCodigo={{@model.precoPorCodigo}}>
+    <PedidoCard @pedido={{pedido}} @codigosPorCep={{@modal.codigoPorCepparsed}} @precoporcodigo={{@model.precoporcodigo}}>
 
     </PedidoCard>
 {{/each}}
@@ -30,9 +30,9 @@
         <p>What is your zip code?</p>
         <input type="number" name="zip_code" id="zip_code">
         <ul class="results">
-            <button class="fechar" {{action "close"}}>X</button>
+            <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
             <p class="button">
-                <button type="button" {{action "calculate"}}>Calculate the total price </button>
+                <button type="button"{{action "calculate"}}>Calculate the total price </button>
                 <button  type="button" id="addorder" {{action "adicionarPedidos"}}>Buy</button>
             </p>
         </ul>

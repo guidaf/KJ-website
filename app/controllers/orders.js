@@ -1,18 +1,12 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import moment from 'moment';
 
-export default class PedidosController extends Controller {
-  get QuandadeDePedidos() {
-    return this.model.pedidos.length;
-  }
+export default class OrdersController extends Controller {
 
-  @action             // botão de compra
+  @action // botão de compra
   adicionarPedidos() {
-    
-    
-
-    if(this.calculate() !== false){
-
+    if (this.calculate() !== false) {
       var name = document.getElementById('name').value;
       var weight = document.getElementById('weight').value;
       var wide = document.getElementById('wide').value;
@@ -23,7 +17,7 @@ export default class PedidosController extends Controller {
 
       this.model.pedidos.pushObject({
         Produto: name,
-        Data: 'aknsakdjf',
+        Data: moment().format('DD/MM/YYYY'),
         Quantidade: amount,
         PesoDoProduto: weight,
         Valor: 0,
@@ -40,16 +34,14 @@ export default class PedidosController extends Controller {
   //Modal
 
   @action
-  show(){
+  show() {
     const modal = document.getElementById('modalID');
     modal.classList.add('show');
   }
-    
+
   @action
-  close(){
+  close() {
     const modal = document.getElementById('modalID');
-    modal.classList.remove('show')
-    console.log('Close');
     document.getElementById('name').value = '';
     document.getElementById('weight').value = '';
     document.getElementById('wide').value = '';
@@ -57,18 +49,20 @@ export default class PedidosController extends Controller {
     document.getElementById('depth').value = '';
     document.getElementById('amount').value = '';
     document.getElementById('zip_code').value = '';
+    modal.classList.remove('show');
   }
 
-
- // Verificando se o valor é válido
+  // Verificando se o valor é válido e enviando o preço final
   @action
   calculate() {
+    var name = document.getElementById('name').value;
     var weight = document.getElementById('weight').value;
     var wide = document.getElementById('wide').value;
     var height = document.getElementById('height').value;
     var depth = document.getElementById('depth').value;
     var amount = document.getElementById('amount').value;
     var zip_code = document.getElementById('zip_code').value;
+
     if (
       weight === '' ||
       weight === 0 ||
@@ -87,10 +81,16 @@ export default class PedidosController extends Controller {
       amount <= 0 ||
       zip_code === '' ||
       zip_code === 0 ||
-      zip_code <= 0) { //Alet
+      zip_code <= 0
+    ) {
+      //Alet
       alert('Por favor, coloque um valor válido!');
       return false;
-    } else { //calculate total 
+    } else if (name === '' || name === ' ') {
+      alert('Por favor, coloque um nome válido!');
+      return false;
+    } else {
+      //calculate total
       var weighttotal = weight * amount * 0.001 * 0.91;
       var picking = 0.28 * amount;
       var armz = wide * height * depth * 0.000001 * 49.98 * amount;

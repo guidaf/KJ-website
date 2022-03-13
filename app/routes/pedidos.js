@@ -13,41 +13,41 @@ export default class PedidosRoute extends Route {
     // fazer a mesma coisa para os preços por peso
 
     return RSVP.hash({
-        // codigosPorCep: parsedCodigosPorCepResponse,
-        codigosPorCep: [
-            {
-                cep: '01001-000',
-                preco: 10,
-            },
-            {
-                cep: '01002-000',
-                preco: 20,
-            },
-        ],
-        pedidos: [
-            {
-              Produto: 'Coca-Cola',
-              Data: '01/01/2019',
-              Quantidade: 2,
-              PesoDoProduto: 500,
-              Valor: 1000,
-              Largura: 10,
-              Altura: 10,
-              Comprimento: 10,
-              EnderecoCEP: '01001-000',
-            },
-            {
-              Produto: 'Guaraná',
-              Data: '01/01/2019',
-              Quantidade: 2,
-              PesoDoProduto: 500,
-              Valor: 1000,
-              Largura: 10,
-              Altura: 10,
-              Comprimento: 10,
-              EnderecoCEP: '01001-000',
-            },
-        ],
+      // codigosPorCep: parsedCodigosPorCepResponse,
+      codigosPorCep: [
+        {
+          cep: '01001-000',
+          preco: 10,
+        },
+        {
+          cep: '01002-000',
+          preco: 20,
+        },
+      ],
+      pedidos: [
+        {
+          Produto: 'Coca-Cola',
+          Data: '01/01/2019',
+          Quantidade: 2,
+          PesoDoProduto: 500,
+          Valor: 1000,
+          Largura: 10,
+          Altura: 10,
+          Comprimento: 10,
+          EnderecoCEP: '01001-000',
+        },
+        {
+          Produto: 'Guaraná',
+          Data: '01/01/2019',
+          Quantidade: 2,
+          PesoDoProduto: 500,
+          Valor: 1000,
+          Largura: 10,
+          Altura: 10,
+          Comprimento: 10,
+          EnderecoCEP: '01001-000',
+        },
+      ],
     });
   }
 }

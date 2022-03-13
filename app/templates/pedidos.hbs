@@ -6,13 +6,13 @@
 
 <h1>Temos {{this.QuandadeDePedidos}} novos!</h1>
 
-<button {{action 'adicionarPedido'}}>
+<button type="button" {{action 'adicionarPedido'}}>
     Adicionar pedido
 </button>
 
 {{#each @model.pedidos as |pedido|}}
-    <PedidoCard @pedido={{pedido}} @codigosPorCep={{@model.codigosPorCep}} @precoPorCodigo={{@model.precoPorCodigo}}>
+    <PedidoCard @pedido={{pedido}} @codigosPorCep={{@codigosPorCep.cep}} @precoPorCodigo={{@model.precoPorCodigo}}>
 
     </PedidoCard>
-{{/each}}
+{{/each}}   
 {{outlet}}
