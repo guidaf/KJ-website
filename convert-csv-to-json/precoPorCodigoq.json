@@ -1,17 +1,17 @@
 [
  {
-  "peso-maximo": 0.25,
-  "codigo-regiao": "SPC",
+  "peso-maximo": "0,25",
+  "codigo-regiao": " SPC",
   "preco": 6.27
  },
  {
-  "peso-maximo": 0.3,
-  "codigo-regiao": "SPC",
+  "peso-maximo": "0,3",
+  "codigo-regiao": " SPC",
   "preco": 6.27
  },
  {
   "peso-maximo": 0.5,
-  "codigo-regiao": "SPC",
+  "codigo-regiao": " SPC",
   "preco": 6.27
  },
  {

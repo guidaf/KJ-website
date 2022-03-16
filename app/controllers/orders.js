@@ -101,7 +101,6 @@ export default class OrdersController extends Controller {
 
 
       var precofinal = weighttotal + picking + armz + packing + frete
-      console.log(precofinal)
       return (precofinal.toFixed(2));
     }
   }
@@ -111,7 +110,6 @@ export default class OrdersController extends Controller {
     for (let i = 0; i < this.model.codigosPorCep.length; i++) {
       if (this.model.codigosPorCep[i]['CEPInicial']<=zip_code<=this.model.codigosPorCep[i]['CEPFinal']) {
         var geografiacomercial = this.model.codigosPorCep[i]['GeografiaComercial'];
-        console.log(geografiacomercial)
         return (this.precofrete(geografiacomercial))
       } 
     }
@@ -121,9 +119,15 @@ export default class OrdersController extends Controller {
     var amount = document.getElementById('amount').value;
     var weight = document.getElementById('weight').value * amount * 0.001 * 0.91 ;
       for (let i = 0; i < this.model.precoporcodigo.length; i++) {
-        if (this.model.precoporcodigo[i]["codigo-regiao"] === geografiacomercial && weight<=this.model.precoporcodigo[i]["peso-maximo"]) {
-          return (this.model.precoporcodigo[i]["preco"])
+
+        let codigoRegiao = this.model.precoporcodigo[i]["codigo-regiao"].replace(/\s+/g, '');
+        let pesostring = this.model.precoporcodigo[i]["peso-maximo"].replace(",",".");
+        let peso = parseFloat(pesostring);
+
+        if (codigoRegiao == geografiacomercial && weight<=peso) {
+          var preco = this.model.precoporcodigo[i]["preco"].replace(",",".");
+          return (parseFloat(preco))
         }        
-    }
-  }
+    }     
+  } 
 }
