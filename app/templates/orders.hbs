@@ -15,20 +15,20 @@
 <div class="modal-container" id="modalID">
     <div class="modal">
         <h1>New Order</h1>
-        <p>What is the order name?</p>
+        <p>Qual o nome do pedido?</p>
         <input type="text" name="name" id="name">
-        <p>What is the order weight in grams?</p>
+        <p>Qual o peso de cada unidade do produto em gramas?</p>
         <input type="number" name="weight" id="weight">
-        <p>How wide is the order in centimeters?</p>
+        <p>Qual a largura para cada unidade de produto em metros?</p>
         <input type="number" name="wide" id="wide">
-        <p>What is the order height in centimeters?</p>
+        <p>Qual a altura para cada unidade de produto em metros?</p>
         <input type="number" name="height" id="height">
-        <p>What is the order depth in centimeters?</p>
+        <p>Qual a profundidade para cada unidade de produto em metros?</p>
         <input type="number" name="depth" id="depth">
-        <p>How many items will there be?</p>
+        <p>Qual a quantidade de itens comprados?</p>
         <input type="number" name="amount" id="amount">
-        <p>What is your zip code?</p>
-         <input type="number" name="zip_code" id="zip_code" {{!--minlength="8"--}}>  
+        <p>Qual o CEP de entrega? Ps:apenas digitos</p>
+        <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos">  
         <ul class="results">
             <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
             <p class="button">

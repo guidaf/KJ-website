@@ -26,6 +26,7 @@ export default class OrdersController extends Controller {
         Altura: height,
         Comprimento: depth,
         EnderecoCEP: zip_code,
+        Frete: precofrete,
       });
 
       this.close();
@@ -38,14 +39,6 @@ export default class OrdersController extends Controller {
   show() {
     const modal = document.getElementById('modalID');
     modal.classList.add('show');
-    for (let i = 0; i < this.model.codigosPorCep.length; i++) {
-      if (this.model.codigosPorCep[i]['CEPInicial']<=5612050<=this.model.codigosPorCep[i]['CEPFinal']) {
-        var geografiacomercial = this.model.codigosPorCep[i]['GeografiaComercial'];
-        console.log(geografiacomercial);
-        break;
-    // console.log(this.model.precoporcodigo[0]["codigo-regiao"])
-      }
-    }
   }
 
   @action
@@ -105,9 +98,11 @@ export default class OrdersController extends Controller {
       var armz = wide * height * depth * 0.000001 * 49.98 * amount;
       var packing = 5.72;
       var frete = this.frete
-      var preçofinal = weighttotal + picking + armz + packing + frete
-      // console.log(this.frete.geografiacomercial)
-      return (preçofinal.toFixed(2));
+
+
+      var precofinal = weighttotal + picking + armz + packing + frete
+      console.log(precofinal)
+      return (precofinal.toFixed(2));
     }
   }
   
@@ -123,7 +118,8 @@ export default class OrdersController extends Controller {
   }
 
   precofrete(geografiacomercial){
-    var weight = document.getElementById('weight').value;
+    var amount = document.getElementById('amount').value;
+    var weight = document.getElementById('weight').value * amount * 0.001 * 0.91 ;
       for (let i = 0; i < this.model.precoporcodigo.length; i++) {
         if (this.model.precoporcodigo[i]["codigo-regiao"] === geografiacomercial && weight<=this.model.precoporcodigo[i]["peso-maximo"]) {
           return (this.model.precoporcodigo[i]["preco"])

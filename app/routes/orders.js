@@ -9,8 +9,6 @@ export default class OrdersRoute extends Route {
 
     let precoporcodigoResponse = await fetch('/api/precoPorCodigo.json');
     let precoporcodigoparsed = await precoporcodigoResponse.json();
-    console.log(precoporcodigoparsed[0]['peso-maximo'])
-    // let PrecoporCodigo = precoporcodigoparsed [0];
 
     return RSVP.hash({
       codigosPorCep: codigoPorCepparsed,
