@@ -143,6 +143,7 @@ button {
 
 .addorder.show{
     display: flex;
+    
 }
 
 .calculate{
@@ -151,4 +152,17 @@ button {
 
 .calculate.show{
     display: flex;
+}
+
+.preco{
+    display: none;
+}
+
+.preco.show{
+    display: flex;
+    position: absolute;
+    font-size: 2em;
+    bottom: 5px;
+    left: 50%;
+    font-weight: bold;
 }

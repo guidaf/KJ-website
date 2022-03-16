@@ -6,10 +6,6 @@ export default class PedidoCardComponent extends Component {
   @tracked emailEnviado = 'não';
   @tracked status = 'em aberto';
 
-  get precoDoFrete() {
-    return this.calcularLogistica();
-  }
-
   @action
   enviarEmail() {
     this.emailEnviado = 'sim';
@@ -18,14 +14,5 @@ export default class PedidoCardComponent extends Component {
   @action
   cancelarPedido() {
     this.status = 'cancelado';
-  }
-
-  @action
-  calcularLogistica() {
-    // GUI vai implementar deve retornar o preço cheio de logistica (int)
-    console.log(this.args.pedido);
-    console.log(this.args.codigosPorCep);
-
-    return 123; //Apenas o Preço do frete deve ser enviado para cá
   }
 }

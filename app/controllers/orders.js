@@ -6,7 +6,6 @@ export default class OrdersController extends Controller {
 
   @action // botão de compra
   adicionarPedidos() {
-    if (this.calculate() !== false) {
       var name = document.getElementById('name').value;
       var wide = document.getElementById('wide').value;
       var height = document.getElementById('height').value;
@@ -30,7 +29,6 @@ export default class OrdersController extends Controller {
       });
 
       this.closemodal();
-    }
   }
 
   //Modal
@@ -46,6 +44,7 @@ export default class OrdersController extends Controller {
     const modal = document.getElementById('modalID');
     const button = document.getElementById('buy')
     const calculate = document.getElementById('calculate')
+    const preco = document.getElementById('preco')
     document.getElementById('name').value = '';
     document.getElementById('weight').value = '';
     document.getElementById('wide').value = '';
@@ -55,6 +54,7 @@ export default class OrdersController extends Controller {
     document.getElementById('zip_code').value = '';
     modal.classList.remove('show');
     button.classList.remove('show')
+    preco.classList.remove('show')
     calculate.classList.add('show')
   }
 
@@ -118,6 +118,8 @@ export default class OrdersController extends Controller {
     calculate.classList.remove('show')
     const button = document.getElementById('buy')
     button.classList.add('show')
+    const preco = document.getElementById('preco')
+    preco.classList.add('show')
   }
 
   get frete(){
