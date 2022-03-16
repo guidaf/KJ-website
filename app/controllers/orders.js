@@ -8,25 +8,25 @@ export default class OrdersController extends Controller {
   adicionarPedidos() {
     if (this.calculate() !== false) {
       var name = document.getElementById('name').value;
-      var weight = document.getElementById('weight').value;
       var wide = document.getElementById('wide').value;
       var height = document.getElementById('height').value;
       var depth = document.getElementById('depth').value;
       var amount = document.getElementById('amount').value;
+      var weight = document.getElementById('weight').value * amount * 0.001 * 0.91 ;
       var zip_code = document.getElementById('zip_code').value;
-      var precofrete = this.calculate()
+      var preco = this.calculate()
 
       this.model.pedidos.pushObject({
         Produto: name,
         Data: moment().format('DD/MM/YYYY'),
         Quantidade: amount,
-        PesoDoProduto: weight,
-        Valor: precofrete,
+        PesoDoProduto: weight.toFixed(2),
+        Valor: preco,
         Largura: wide,
         Altura: height,
         Comprimento: depth,
         EnderecoCEP: zip_code,
-        Frete: precofrete,
+        Frete: 1,
       });
 
       this.close();

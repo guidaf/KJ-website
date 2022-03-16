@@ -1,6 +1,6 @@
 <div class="Title">
     <h1>Seus Pedidos:</h1>
-    <button class="NewOrder" type="button" {{action "show"}}>New Order</button>
+    <button class="NewOrder" type="button" {{action "show"}}>Novo Pedido</button>
 </div>
 
 
@@ -14,7 +14,7 @@
 
 <div class="modal-container" id="modalID">
     <div class="modal">
-        <h1>New Order</h1>
+        <h1>Novo pedido</h1>
         <p>Qual o nome do pedido?</p>
         <input type="text" name="name" id="name">
         <p>Qual o peso de cada unidade do produto em gramas?</p>
@@ -32,8 +32,8 @@
         <ul class="results">
             <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
             <p class="button">
-                <button type="button"{{action "calculate"}}>Calculate the total price </button>
-                <button  type="button" id="addorder" {{action "adicionarPedidos"}}>Buy</button>
+                <button type="button"{{action "calculate"}}>Calcular o valor do pedido </button>
+                <button  type="button" id="addorder" {{action "adicionarPedidos"}}>Comprar</button>
             </p>
         </ul>
     </div>
