@@ -2,12 +2,12 @@
     <h2>{{@pedido.Produto}}</h2> 
     <div>
         <li>Preço do frete: R$ {{@pedido.Valor}} </li>
-        <li>Dimensão: {{@pedido.Largura}} x {{@pedido.Altura}} x {{@pedido.Comprimento}} </li>
+        <li>Dimensão: {{@pedido.Largura}}cm x {{@pedido.Altura}}cm x {{@pedido.Comprimento}}cm </li>
         <li>Data: {{@pedido.Data}}</li>
     </div>
     <div>
-        <li>quant: {{@pedido.Quantidade}}</li>
-        <li>preço do frete: {{this.precoDoFrete}}</li>
+        <li>quant: {{@pedido.Quantidade}} uni.</li>
+        <li>Peso do pedido: {{@pedido.PesoDoProduto}} g.</li>
     </div>
     <div>
         <li>status: {{this.status}}</li>

@@ -14,13 +14,14 @@ export default class OrdersController extends Controller {
       var depth = document.getElementById('depth').value;
       var amount = document.getElementById('amount').value;
       var zip_code = document.getElementById('zip_code').value;
+      var precofrete = this.calculate()
 
       this.model.pedidos.pushObject({
         Produto: name,
         Data: moment().format('DD/MM/YYYY'),
         Quantidade: amount,
         PesoDoProduto: weight,
-        Valor: this.calculate,
+        Valor: precofrete,
         Largura: wide,
         Altura: height,
         Comprimento: depth,
@@ -38,7 +39,7 @@ export default class OrdersController extends Controller {
     const modal = document.getElementById('modalID');
     modal.classList.add('show');
     for (let i = 0; i < this.model.codigosPorCep.length; i++) {
-      if (this.model.codigosPorCep[i]['CEPInicial']<=1009908<=this.model.codigosPorCep[i]['CEPFinal']) {
+      if (this.model.codigosPorCep[i]['CEPInicial']<=5612050<=this.model.codigosPorCep[i]['CEPFinal']) {
         var geografiacomercial = this.model.codigosPorCep[i]['GeografiaComercial'];
         console.log(geografiacomercial);
         break;
@@ -105,8 +106,8 @@ export default class OrdersController extends Controller {
       var packing = 5.72;
       var frete = this.frete
       var preçofinal = weighttotal + picking + armz + packing + frete
-      console.log(preçofinal)
-      return preçofinal;
+      // console.log(this.frete.geografiacomercial)
+      return (preçofinal.toFixed(2));
     }
   }
   
