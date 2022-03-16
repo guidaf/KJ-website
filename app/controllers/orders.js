@@ -20,7 +20,7 @@ export default class OrdersController extends Controller {
         Data: moment().format('DD/MM/YYYY'),
         Quantidade: amount,
         PesoDoProduto: weight,
-        Valor: 0,
+        Valor: this.calculate,
         Largura: wide,
         Altura: height,
         Comprimento: depth,
@@ -37,6 +37,14 @@ export default class OrdersController extends Controller {
   show() {
     const modal = document.getElementById('modalID');
     modal.classList.add('show');
+    for (let i = 0; i < this.model.codigosPorCep.length; i++) {
+      if (this.model.codigosPorCep[i]['CEPInicial']<=1009908<=this.model.codigosPorCep[i]['CEPFinal']) {
+        var geografiacomercial = this.model.codigosPorCep[i]['GeografiaComercial'];
+        console.log(geografiacomercial);
+        break;
+    // console.log(this.model.precoporcodigo[0]["codigo-regiao"])
+      }
+    }
   }
 
   @action
@@ -95,8 +103,30 @@ export default class OrdersController extends Controller {
       var picking = 0.28 * amount;
       var armz = wide * height * depth * 0.000001 * 49.98 * amount;
       var packing = 5.72;
-      // var preçofinal = weighttotal + picking + armz + packing + frete
-      return;
+      var frete = this.frete
+      var preçofinal = weighttotal + picking + armz + packing + frete
+      console.log(preçofinal)
+      return preçofinal;
+    }
+  }
+  
+  get frete(){
+    var zip_code = document.getElementById('zip_code').value;
+    for (let i = 0; i < this.model.codigosPorCep.length; i++) {
+      if (this.model.codigosPorCep[i]['CEPInicial']<=zip_code<=this.model.codigosPorCep[i]['CEPFinal']) {
+        var geografiacomercial = this.model.codigosPorCep[i]['GeografiaComercial'];
+        console.log(geografiacomercial)
+        return (this.precofrete(geografiacomercial))
+      } 
+    }
+  }
+
+  precofrete(geografiacomercial){
+    var weight = document.getElementById('weight').value;
+      for (let i = 0; i < this.model.precoporcodigo.length; i++) {
+        if (this.model.precoporcodigo[i]["codigo-regiao"] === geografiacomercial && weight<=this.model.precoporcodigo[i]["peso-maximo"]) {
+          return (this.model.precoporcodigo[i]["preco"])
+        }        
     }
   }
 }

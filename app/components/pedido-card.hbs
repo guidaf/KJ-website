@@ -1,7 +1,7 @@
 <div class="pedidos">
     <h2>{{@pedido.Produto}}</h2> 
     <div>
-        <li>{{@precoporcodigo.codigo-regiao}} {{@codigosPorCep.CepInicial}} Preço do frete</li>
+        <li>Preço do frete: R$ {{@pedido.Valor}} </li>
         <li>Dimensão: {{@pedido.Largura}} x {{@pedido.Altura}} x {{@pedido.Comprimento}} </li>
         <li>Data: {{@pedido.Data}}</li>
     </div>
