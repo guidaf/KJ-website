@@ -1,6 +1,6 @@
 <div class="Title">
     <h1>Seus Pedidos:</h1>
-    <button class="NewOrder" type="button" {{action "show"}}>Novo Pedido</button>
+    <button class="NewOrder" type="button" {{action "showmodal"}}>Novo Pedido</button>
 </div>
 
 
@@ -30,10 +30,10 @@
         <p>Qual o CEP de entrega? Ps:apenas digitos</p>
         <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos">  
         <ul class="results">
-            <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
+            <button class="fechar"  id="teste" type="button" {{action "closemodal"}}>X</button>
             <p class="button">
-                <button type="button"{{action "calculate"}}>Calcular o valor do pedido </button>
-                <button  type="button" id="addorder" {{action "adicionarPedidos"}}>Comprar</button>
+                <button type="button" class="calculate show" id="calculate" {{action "calculate"}}>Calcular o valor do pedido </button>
+                <button  type="button" class="addorder" id="buy" {{action "adicionarPedidos"}}>Comprar</button>
             </p>
         </ul>
     </div>

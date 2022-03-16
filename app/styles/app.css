@@ -6,7 +6,7 @@ body, div, .button {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     background: rgb(249, 249, 249);
     margin: 0px auto;
 }
@@ -135,4 +135,20 @@ button {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+}
+
+.addorder{
+    display: none;
+}
+
+.addorder.show{
+    display: flex;
+}
+
+.calculate{
+    display: none;
+}
+
+.calculate.show{
+    display: flex;
 }

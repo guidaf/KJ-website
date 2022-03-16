@@ -29,21 +29,23 @@ export default class OrdersController extends Controller {
         Frete: 1,
       });
 
-      this.close();
+      this.closemodal();
     }
   }
 
   //Modal
 
   @action
-  show() {
+  showmodal() {
     const modal = document.getElementById('modalID');
     modal.classList.add('show');
   }
 
   @action
-  close() {
+  closemodal() {
     const modal = document.getElementById('modalID');
+    const button = document.getElementById('buy')
+    const calculate = document.getElementById('calculate')
     document.getElementById('name').value = '';
     document.getElementById('weight').value = '';
     document.getElementById('wide').value = '';
@@ -52,7 +54,10 @@ export default class OrdersController extends Controller {
     document.getElementById('amount').value = '';
     document.getElementById('zip_code').value = '';
     modal.classList.remove('show');
+    button.classList.remove('show')
+    calculate.classList.add('show')
   }
+
 
   // Verificando se o valor é válido e enviando o preço final
   @action
@@ -93,18 +98,28 @@ export default class OrdersController extends Controller {
       return false;
     } else {
       //calculate total
+      this.showbutton();
+
       var weighttotal = weight * amount * 0.001 * 0.91;
       var picking = 0.28 * amount;
       var armz = wide * height * depth * 0.000001 * 49.98 * amount;
       var packing = 5.72;
-      var frete = this.frete
+      var frete = this.frete;
 
-
-      var precofinal = weighttotal + picking + armz + packing + frete
+      var precofinal = weighttotal + picking + armz + packing + frete;
       return (precofinal.toFixed(2));
     }
   }
   
+  // Aparecer botão
+  
+  showbutton(){
+    const calculate = document.getElementById('calculate')
+    calculate.classList.remove('show')
+    const button = document.getElementById('buy')
+    button.classList.add('show')
+  }
+
   get frete(){
     var zip_code = document.getElementById('zip_code').value;
     for (let i = 0; i < this.model.codigosPorCep.length; i++) {
