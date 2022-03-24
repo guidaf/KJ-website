@@ -1,9 +1,10 @@
 import Route from '@ember/routing/route';
 import RSVP from 'rsvp';
+import { inject as service } from '@ember/service';
 
 export default class OrdersRoute extends Route {
+  @service store;
   async model() {
-
     let codigoPorCepresponse = await fetch('/api/codigoPorCep.json');
     let codigoPorCepparsed = await codigoPorCepresponse.json();
 
@@ -12,31 +13,8 @@ export default class OrdersRoute extends Route {
 
     return RSVP.hash({
       codigosPorCep: codigoPorCepparsed,
-      precoporcodigo:precoporcodigoparsed,
-      pedidos: [
-        {
-          Produto: 'Coca-Cola',
-          Data: '01/01/2022',
-          Quantidade: 20,
-          PesoDoProduto: 500,
-          Valor: 70,
-          Largura: 10,
-          Altura: 10,
-          Comprimento: 10,
-          EnderecoCEP: '01001-000',
-        },
-        {
-          Produto: 'Guaraná',
-          Data: '04/01/2022',
-          Quantidade: 40,
-          PesoDoProduto: 700,
-          Valor: 100,
-          Largura: 2,
-          Altura: 2,
-          Comprimento: 2,
-          EnderecoCEP: '01001-000',
-        },
-      ],
+      precoporcodigo: precoporcodigoparsed,
+      pedidos: this.store.findAll('order'),
     });
   }
 }
