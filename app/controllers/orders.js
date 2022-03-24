@@ -25,7 +25,6 @@ export default class OrdersController extends Controller {
         Altura: height,
         Comprimento: depth,
         EnderecoCEP: zip_code,
-        Frete: 1,
       });
 
       this.closemodal();
@@ -107,7 +106,8 @@ export default class OrdersController extends Controller {
       var frete = this.frete;
 
       var precofinal = weighttotal + picking + armz + packing + frete;
-      return (precofinal.toFixed(2));
+      var final = precofinal.toFixed(2);
+      return final
     }
   }
   
