@@ -32,9 +32,8 @@
         <ul class="results">
             <button class="fechar"  id="teste" type="button" {{action "closemodal"}}>X</button>
             <p class="button">
-                <button type="button" class="calculate show" id="calculate" {{action "calculate"}}>Calcular o valor do pedido </button>
-                <button  type="button" class="addorder" id="buy" {{action "adicionarPedidos"}}>Comprar</button>
-                <p class="preco" id="preco">{{!---R${{@precofinal}}---}}</p>
+                <button type="button" class="calculate show" {{action "calculate"}}>Calcular o valor do pedido </button>
+                <button  type="button" class="addorder show"  {{action "adicionarPedidos"}}>Comprar</button>
             </p>
         </ul>
     </div>

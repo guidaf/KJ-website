@@ -136,33 +136,3 @@ button {
     flex-direction: column;
     justify-content: space-evenly;
 }
-
-.addorder{
-    display: none;
-}
-
-.addorder.show{
-    display: flex;
-    
-}
-
-.calculate{
-    display: none;
-}
-
-.calculate.show{
-    display: flex;
-}
-
-.preco{
-    display: none;
-}
-
-.preco.show{
-    display: flex;
-    position: absolute;
-    font-size: 2em;
-    bottom: 5px;
-    left: 50%;
-    font-weight: bold;
-}
