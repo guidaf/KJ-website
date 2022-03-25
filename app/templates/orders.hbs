@@ -12,29 +12,31 @@
 {{outlet}}
 
 
-<div class="modal-container" id="modalID">
+<div class="modal-container {{if this.modalIsShown "show" ""}}" id="modalID">
     <div class="modal">
-        <h1>Novo pedido</h1>
-        <p>Qual o nome do pedido?</p>
-        <input type="text" name="name" id="name">
-        <p>Qual o peso de cada unidade do produto em gramas?</p>
-        <input type="number" name="weight" id="weight">
-        <p>Qual a largura para cada unidade de produto em metros?</p>
-        <input type="number" name="wide" id="wide">
-        <p>Qual a altura para cada unidade de produto em metros?</p>
-        <input type="number" name="height" id="height">
-        <p>Qual a profundidade para cada unidade de produto em metros?</p>
-        <input type="number" name="depth" id="depth">
-        <p>Qual a quantidade de itens comprados?</p>
-        <input type="number" name="amount" id="amount">
-        <p>Qual o CEP de entrega?</p>
-        <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos">  
-        <ul class="results">
-            <button class="fechar"  id="teste" type="button" {{action "closemodal"}}>X</button>
-            <p class="button">
-                <button type="button" class="calculate show" {{action "calculate"}}>Calcular o valor do pedido </button>
-                <button  type="button" class="addorder show"  {{action "adicionarPedidos"}}>Comprar</button>
-            </p>
-        </ul>
+        {{#if this.newOrder}}
+            <h1>Novo pedido</h1>
+            <p>Qual o nome do pedido?</p>
+            <Input type="text" name="name" id="name" @value={{this.newOrder.produto}}/>
+            <p>Qual o peso de cada unidade do produto em gramas?</p>
+            <input type="number" name="weight" id="weight">
+            <p>Qual a largura para cada unidade de produto em metros?</p>
+            <input type="number" name="wide" id="wide">
+            <p>Qual a altura para cada unidade de produto em metros?</p>
+            <input type="number" name="height" id="height">
+            <p>Qual a profundidade para cada unidade de produto em metros?</p>
+            <input type="number" name="depth" id="depth">
+            <p>Qual a quantidade de itens comprados?</p>
+            <Input type="number" name="amount" id="amount" @value={{this.newOrder.quantidade}}/>
+            <p>Qual o CEP de entrega? Ps:apenas digitos</p>
+            <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos">  
+            <ul class="results">
+                <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
+                <p class="button">
+                    <button type="button" class="calculate show" {{action "calculate"}}>Calcular o valor do pedido </button>
+                    <button  type="button" id="addorder" {{action "adicionarPedidos"}}>Buy</button>
+                </p>
+            </ul>
+        {{/if}}
     </div>
 </div>

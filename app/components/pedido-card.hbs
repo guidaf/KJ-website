@@ -1,17 +1,18 @@
 <div class="pedidos">
-    <h2>{{@pedido.Produto}}</h2> 
+    <h2>{{@pedido.produto}}</h2> 
     <div>
-        <li>Preço do pedido: R${{@pedido.Valor}} </li>
-        <li>Dimensão: {{@pedido.Largura}}m x {{@pedido.Altura}}m x {{@pedido.Comprimento}}m </li>
-        <li>Data: {{@pedido.Data}}</li>
+        <li>Preço do pedido: R${{@pedido.valor}} </li>
+        <li>Dimensão: {{@pedido.largura}}m x {{@pedido.altura}}m x {{@pedido.comprimento}}m </li>
+        <li>Data: {{@pedido.data}}</li>
     </div>
     <div>
-        <li>quant: {{@pedido.Quantidade}} uni.</li>
-        <li>Peso do pedido: {{@pedido.PesoDoProduto}} Kg.</li>
+        <li>quant: {{@pedido.quantidade}} uni.</li>
+        <li>Peso do pedido: {{@pedido.pesoDoProduto}} Kg.</li>
     </div>
     <div>
         <li>status: {{this.status}}</li>
         <li>email enviado? {{this.emailEnviado}}</li>
+        <li>frete: {{this.precoDoFrete}} </li>
     </div>
     <div>
         <button type="button" {{action 'enviarEmail'}}>Enviar Email para comprador</button>

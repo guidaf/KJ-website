@@ -1,13 +1,13 @@
-import Model from '@ember-data/model';
+import Model, { attr } from '@ember-data/model';
 
 export default class OrderModel extends Model {
-    //codigo por cep
-    // @attr CEPInicial;
-    // @attr CEPFinal;
-    // @attr GeografiaComercial;
-
-   //preco por codigo
-    // @attr peso-maximo;
-    // @attr codigo-regiao;
-    // @attr preco;
+  @attr produto;
+  @attr valor;
+  @attr quantidade;
+  @attr data;
+  @attr pesoDoProduto;
+  @attr largura;
+  @attr altura;
+  @attr comprimento;
+  @attr enderecoCEP;
 }
