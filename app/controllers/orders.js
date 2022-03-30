@@ -42,56 +42,77 @@ export default class OrdersController extends Controller {
   calculate() {
     let isValid = this.validateOrder();
     if (true==isValid) {
-      //Alet
-      alert('Por favor, coloque um valor válido!');
-      return false;
-    } else {
       //calculate total
-      this.showbutton();
 
-      var weighttotal = weight * amount * 0.001 * 0.91;
-      var picking = 0.28 * amount;
-      var armz = wide * height * depth * 0.000001 * 49.98 * amount;
+      var weighttotal = this.newOrder.pesoDoProduto * this.newOrder.quantidade * 0.001 * 0.91;
+      var picking = 0.28 * this.newOrder.quantidade;
+      var armz = this.newOrder.largura * this.newOrder.altura * this.newOrder.profundidade * 0.000001 * 49.98 * this.newOrder.quantidade;
       var packing = 5.72;
+
       var frete = this.frete;
+
+      alert(frete)
 
       var precofinal = weighttotal + picking + armz + packing + frete;
       return precofinal.toFixed(2);
     }
   }
 
- validateOrder() {
-  if (
-    this.weight === '' ||
-    this.weight === 0 ||
-    this.weight <= 0 ||
-    this.wide === '' ||
-    this.wide === 0 ||
-    this.wide <= 0 ||
-    this.height === '' ||
-    this.height === 0 ||
-    this.height <= 0 ||
-    this.depth === '' ||
-    this.depth === 0 ||
-    this.depth <= 0 ||
-    this.amount === '' ||
-    this.amount === 0 ||
-    this.amount <= 0 ||
-    this.zip_code === '' ||
-    this.zip_code === 0 ||
-    this.zip_code <= 0
-  ) { 
-    // validar as infos com base nas propriedades do model
-    // ex: if (this.newOrder.produto === '') return false;
-    // ex: if (this.newOrder.cep === '') return false;
-    // ex: if (this.newOrder.produto === '') return false;
 
+  // VALIDANDO VALORES
+ validateOrder() {
+  if (this.newOrder.pesoDoProduto == null ||
+    isNaN(this.newOrder.pesoDoProduto) == true ||
+    this.newOrder.pesoDoProduto <= 0) {
+      alert('Por favor, coloque um peso válido!');
+      return false;
+    }
+  
+  else if (this.newOrder.largura == null ||
+  this.newOrder.largura === 0 ||
+  isNaN(this.newOrder.largura) == true ||
+  this.newOrder.largura <= 0) {
+    alert('Por favor, coloque uma largura válida!');
+    return false;
+  } 
+  
+  else if (this.newOrder.altura == null ||
+  this.newOrder.altura === 0 ||
+  isNaN(this.newOrder.altura) == true ||
+  this.newOrder.altura <= 0) {
+    alert('Por favor, coloque uma altura válida!');
+    return false;
+  } 
+  
+  else if (this.newOrder.profundidade == null ||
+  this.newOrder.profundidade === 0 ||
+  isNaN(this.newOrder.profundidade) == true ||
+  this.newOrder.profundidade <= 0) {
+      alert('Por favor, coloque uma profundidade válida!');
+      return false;
+  } 
+  
+  else if (this.newOrder.quantidade == null ||
+  this.newOrder.quantidade === 0 ||
+  isNaN(this.newOrder.quantidade) == true ||
+  this.newOrder.quantidade <= 0) {
+    alert('Por favor, coloque uma quantidade válida!');
+    return false;
+  } 
+  
+  else if (this.newOrder.enderecoCEP == null ||
+  this.newOrder.enderecoCEP === 0 ||
+  isNaN(this.newOrder.enderecoCEP) == true ||
+  this.newOrder.enderecoCEP <= 0) {
+    alert('Por favor, coloque uma Código Postal válido!');
+    return false;
+  } else {
     return true;
   }
 }
 
   get frete() {
-    var zip_code = document.getElementById('zip_code').value;
+    var zip_code = this.newOrder.enderecoCEP;
     for (let i = 0; i < this.model.codigosPorCep.length; i++) {
       if (
         this.model.codigosPorCep[i]['CEPInicial'] <=
@@ -106,9 +127,9 @@ export default class OrdersController extends Controller {
   }
 
   precofrete(geografiacomercial) {
-    var amount = document.getElementById('amount').value;
-    var weight =
-      document.getElementById('weight').value * amount * 0.001 * 0.91;
+    var amount = this.newOrder.quantidade.value;
+    var weight = this.newOrder.pesoDoProduto.value;
+    var weighttotal = weight * amount * 0.001 * 0.91;
     for (let i = 0; i < this.model.precoporcodigo.length; i++) {
       let codigoRegiao = this.model.precoporcodigo[i]['codigo-regiao'].replace(
         /\s+/g,
@@ -120,8 +141,9 @@ export default class OrdersController extends Controller {
       );
       let peso = parseFloat(pesostring);
 
-      if (codigoRegiao == geografiacomercial && weight <= peso) {
+      if (codigoRegiao == geografiacomercial && weighttotal <= peso) {
         var preco = this.model.precoporcodigo[i]['preco'].replace(',', '.');
+          console.log (preco)
         return parseFloat(preco);
       }
     }
