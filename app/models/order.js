@@ -8,6 +8,6 @@ export default class OrderModel extends Model {
   @attr pesoDoProduto;
   @attr largura;
   @attr altura;
-  @attr comprimento;
+  @attr profundidade;
   @attr enderecoCEP;
 }

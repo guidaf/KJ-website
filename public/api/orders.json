@@ -4,30 +4,30 @@
             "type": "order",
             "id": "1",
             "attributes": {
-                "produto": "Cerveja",
-                "quantidade": "1",
-                "data": "01/01/2019",
-                "peso-do-produto": "1kg",
-                "valor": "R$ 5,00",
-                "largura": 0.3,
-                "altura": 0.3,
+                "produto": "Caso 1",
+                "quantidade": 2,
+                "data": "02/02/2022",
+                "peso-do-produto": 250,
+                "valor": "teste",
+                "largura": 0.2,
+                "altura": 0.2,
                 "comprimento": 0.3,
-                "endereco-CEP": "01001-000"
+                "endereco-CEP": 5612050
             }
         },
         {
             "type": "order",
             "id": "2",
             "attributes": {
-                "produto": "Cerveja",
-                "quantidade": "1",
+                "produto": "Caso 2",
+                "quantidade": 3,
                 "data": "01/01/2019",
-                "peso-do-produto": "1kg",
-                "valor": "R$ 5,00",
-                "largura": 0.3,
-                "altura": 0.3,
-                "comprimento": 0.3,
-                "endereco-CEP": "01001-000"
+                "peso-do-produto": 1200,
+                "valor": "Teste",
+                "largura": 0.4,
+                "altura": 0.2,
+                "comprimento": 0.5,
+                "endereco-CEP": 4520010
             }
         }
     ]

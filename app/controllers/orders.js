@@ -1,6 +1,5 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
-import moment from 'moment';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
@@ -10,36 +9,16 @@ export default class OrdersController extends Controller {
 
   @action // botão de compra
   adicionarPedidos() {
-      var name = document.getElementById('name').value;
-      var wide = document.getElementById('wide').value;
-      var height = document.getElementById('height').value;
-      var depth = document.getElementById('depth').value;
-      var amount = document.getElementById('amount').value;
-      var weight = document.getElementById('weight').value * amount * 0.001 * 0.91 ;
-      var zip_code = document.getElementById('zip_code').value;
-      var preco = this.calculate()
-
-      this.model.pedidos.pushObject({
-        Produto: name,
-        Data: moment().format('DD/MM/YYYY'),
-        Quantidade: amount,
-        PesoDoProduto: weight.toFixed(2),
-        Valor: preco,
-        Largura: wide,
-        Altura: height,
-        Comprimento: depth,
-        EnderecoCEP: zip_code,
-      });
-
-      if (this.calculate() !== false) {
+    if (this.calculate() !== false) {
       this.newOrder.save();
-
       this.closemodal();
       }
   }
 
   //Modal
+
   @tracked modalIsShown = false;
+
   @action show() {
     this.modalIsShown = true;
 
@@ -62,7 +41,7 @@ export default class OrdersController extends Controller {
   @action
   calculate() {
     let isValid = this.validateOrder();
-    if (!isValid) {
+    if (true==isValid) {
       //Alet
       alert('Por favor, coloque um valor válido!');
       return false;
@@ -82,6 +61,26 @@ export default class OrdersController extends Controller {
   }
 
  validateOrder() {
+  if (
+    this.weight === '' ||
+    this.weight === 0 ||
+    this.weight <= 0 ||
+    this.wide === '' ||
+    this.wide === 0 ||
+    this.wide <= 0 ||
+    this.height === '' ||
+    this.height === 0 ||
+    this.height <= 0 ||
+    this.depth === '' ||
+    this.depth === 0 ||
+    this.depth <= 0 ||
+    this.amount === '' ||
+    this.amount === 0 ||
+    this.amount <= 0 ||
+    this.zip_code === '' ||
+    this.zip_code === 0 ||
+    this.zip_code <= 0
+  ) { 
     // validar as infos com base nas propriedades do model
     // ex: if (this.newOrder.produto === '') return false;
     // ex: if (this.newOrder.cep === '') return false;
@@ -89,6 +88,7 @@ export default class OrdersController extends Controller {
 
     return true;
   }
+}
 
   get frete() {
     var zip_code = document.getElementById('zip_code').value;

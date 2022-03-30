@@ -1,35 +1,33 @@
 <div class="Title">
     <h1>Seus Pedidos:</h1>
-    <button class="NewOrder" type="button" {{action "showmodal"}}>Novo Pedido</button>
+    <button class="NewOrder" type="button" {{action "show"}}>Novo Pedido</button>
 </div>
 
 
 {{#each @model.pedidos as |pedido|}}
-    <PedidoCard @pedido={{pedido}}>
-
-    </PedidoCard>
+    <PedidoCard @pedido={{pedido}}/>
 {{/each}}
 {{outlet}}
 
 
-<div class="modal-container {{if this.modalIsShown "show" ""}}" id="modalID">
-    <div class="modal">
+<div class="modal-container {{if this.modalIsShown "show" ""}}" id="modalID">   
+     <div class="modal">
         {{#if this.newOrder}}
             <h1>Novo pedido</h1>
             <p>Qual o nome do pedido?</p>
             <Input type="text" name="name" id="name" @value={{this.newOrder.produto}}/>
             <p>Qual o peso de cada unidade do produto em gramas?</p>
-            <input type="number" name="weight" id="weight">
+            <input type="number" name="weight" id="weight" @value={{this.newOrder.pesoDoProduto}}/>
             <p>Qual a largura para cada unidade de produto em metros?</p>
-            <input type="number" name="wide" id="wide">
+            <input type="number" name="wide" id="wide" @value={{this.newOrder.largura}}/>
             <p>Qual a altura para cada unidade de produto em metros?</p>
-            <input type="number" name="height" id="height">
+            <input type="number" name="height" id="height"  @value={{this.newOrder.altura}}/>
             <p>Qual a profundidade para cada unidade de produto em metros?</p>
-            <input type="number" name="depth" id="depth">
+            <input type="number" name="depth" id="depth" @value={{this.newOrder.profundidade}}/>
             <p>Qual a quantidade de itens comprados?</p>
             <Input type="number" name="amount" id="amount" @value={{this.newOrder.quantidade}}/>
             <p>Qual o CEP de entrega? Ps:apenas digitos</p>
-            <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos">  
+            <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos"  @value={{this.newOrder.enderecoCEP}}/>  
             <ul class="results">
                 <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
                 <p class="button">
