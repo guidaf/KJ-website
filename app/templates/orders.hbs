@@ -5,7 +5,8 @@
 
 
 {{#each @model.pedidos as |pedido|}}
-    <PedidoCard @pedido={{pedido}}/>
+    <PedidoCard @pedido={{pedido}} @codigosPorCep={{@modal.codigoPorCepparsed}} @precoporcodigo={{@model.precoporcodigo}}>
+    </PedidoCard>
 {{/each}}
 {{outlet}}
 
@@ -17,17 +18,17 @@
             <p>Qual o nome do pedido?</p>
             <Input type="text" name="name" id="name" @value={{this.newOrder.produto}}/>
             <p>Qual o peso de cada unidade do produto em gramas?</p>
-            <input type="number" name="weight" id="weight" @value={{this.newOrder.pesoDoProduto}}/>
+            <Input type="number" name="weight" id="weight" @value={{this.newOrder.pesoDoProduto}}/>
             <p>Qual a largura para cada unidade de produto em metros?</p>
-            <input type="number" name="wide" id="wide" @value={{this.newOrder.largura}}/>
+            <Input type="number" name="wide" id="wide" @value={{this.newOrder.largura}}/>
             <p>Qual a altura para cada unidade de produto em metros?</p>
-            <input type="number" name="height" id="height"  @value={{this.newOrder.altura}}/>
+            <Input type="number" name="height" id="height" @value={{this.newOrder.altura}}/>
             <p>Qual a profundidade para cada unidade de produto em metros?</p>
-            <input type="number" name="depth" id="depth" @value={{this.newOrder.profundidade}}/>
+            <Input type="number" name="depth" id="depth" @value={{this.newOrder.profundidade}}/>
             <p>Qual a quantidade de itens comprados?</p>
             <Input type="number" name="amount" id="amount" @value={{this.newOrder.quantidade}}/>
             <p>Qual o CEP de entrega? Ps:apenas digitos</p>
-            <input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos"  @value={{this.newOrder.enderecoCEP}}/>  
+            <Input type="number" name="zip_code" id="zip_code" placeholder="Apenas digitos" @value={{this.newOrder.enderecoCEP}}/>    
             <ul class="results">
                 <button class="fechar"  id="teste" type="button" {{action "close"}}>X</button>
                 <p class="button">

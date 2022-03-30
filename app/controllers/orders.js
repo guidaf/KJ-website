@@ -11,7 +11,7 @@ export default class OrdersController extends Controller {
   adicionarPedidos() {
     if (this.calculate() !== false) {
       this.newOrder.save();
-      this.closemodal();
+      this.close();
       }
   }
 
