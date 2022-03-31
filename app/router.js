@@ -9,11 +9,3 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('orders');
 });
-
-// App.UsersRoute = Ember.Router.extend({
-//   model: function(){
-//     Ember.$.getCSV('//app/components/codigo-por-cep.csv')
-
-//   console.log(data)
-//   }
-// });

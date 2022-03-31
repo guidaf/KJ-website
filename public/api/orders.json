@@ -22,14 +22,14 @@
             "attributes": {
                 "produto": "Caso 2",
                 "quantidade": 3,
-                "data": "01/01/2019",
+                "data": "03/01/2022",
                 "peso-do-produto": 1200,
-                "valor": 21.02,
+                "valor": 18.98,
                 "largura": 0.4,
                 "altura": 0.2,
                 "profundidade": 0.5,
                 "endereco-CEP": 4520010,
-                "frete": 11.18
+                "frete": 9.14
             }
         }
     ]

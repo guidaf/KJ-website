@@ -13,6 +13,7 @@ export default class OrdersController extends Controller {
     if (this.calculate() !== false) {
       this.newOrder.save();
       this.close();
+      this.newOrder = null;
       }
   }
 
@@ -31,10 +32,6 @@ export default class OrdersController extends Controller {
   @action
   close() {
     this.modalIsShown = false;
-
-    if (this.newOrder) {
-      this.newOrder.unloadRecord();
-    }
   }
 
 
@@ -59,6 +56,9 @@ export default class OrdersController extends Controller {
       this.newOrder.data = moment().format('DD/MM/YYYY');
 
       return true;
+    }
+    else{
+      return false;
     }
   }
 
@@ -131,15 +131,12 @@ export default class OrdersController extends Controller {
   }
 
   precofrete(geografiacomercial) {
-    var amount = this.newOrder.quantidade;
     var weight = this.newOrder.pesoDoProduto;
-    var weighttotal = weight * amount * 0.001 * 0.91;
-    console.log(weighttotal);
+    var weighttotal = weight * 0.001;
     for (let i = 0; i < this.model.precoporcodigo.length; i++) {
       let codigoRegiao = this.model.precoporcodigo[i]['codigo-regiao'].replace(/\s+/g,'');
       let pesostring = this.model.precoporcodigo[i]['peso-maximo'].replace(',','.');
       let peso = parseFloat(pesostring);
-      console.log(peso);
       if (codigoRegiao == geografiacomercial && weighttotal <= peso) {
         var preco = this.model.precoporcodigo[i]['preco'].replace(',', '.');
         return parseFloat(preco);
