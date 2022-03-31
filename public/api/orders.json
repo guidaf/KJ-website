@@ -8,12 +8,12 @@
                 "quantidade": 2,
                 "data": "02/02/2022",
                 "peso-do-produto": 250,
-                "valor": "teste",
+                "valor": 13.01,
                 "largura": 0.2,
                 "altura": 0.2,
                 "profundidade": 0.3,
                 "endereco-CEP": 5612050,
-                "frete": "Frete"
+                "frete": 6.27
             }
         },
         {
@@ -24,12 +24,12 @@
                 "quantidade": 3,
                 "data": "01/01/2019",
                 "peso-do-produto": 1200,
-                "valor": "Teste",
+                "valor": 21.02,
                 "largura": 0.4,
                 "altura": 0.2,
                 "profundidade": 0.5,
                 "endereco-CEP": 4520010,
-                "frete": "Frate"
+                "frete": 11.18
             }
         }
     ]
