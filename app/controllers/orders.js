@@ -1,5 +1,6 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import moment from 'moment';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
@@ -51,10 +52,13 @@ export default class OrdersController extends Controller {
 
       var frete = this.frete;
 
-      alert(frete)
-
       var precofinal = weighttotal + picking + armz + packing + frete;
-      return precofinal.toFixed(2);
+      
+      this.newOrder.valor = precofinal.toFixed(2);
+      this.newOrder.frete = frete;
+      this.newOrder.data = moment().format('DD/MM/YYYY');
+
+      return true;
     }
   }
 
@@ -127,8 +131,8 @@ export default class OrdersController extends Controller {
   }
 
   precofrete(geografiacomercial) {
-    var amount = this.newOrder.quantidade.value;
-    var weight = this.newOrder.pesoDoProduto.value;
+    var amount = this.newOrder.quantidade;
+    var weight = this.newOrder.pesoDoProduto;
     var weighttotal = weight * amount * 0.001 * 0.91;
     for (let i = 0; i < this.model.precoporcodigo.length; i++) {
       let codigoRegiao = this.model.precoporcodigo[i]['codigo-regiao'].replace(
@@ -143,7 +147,6 @@ export default class OrdersController extends Controller {
 
       if (codigoRegiao == geografiacomercial && weighttotal <= peso) {
         var preco = this.model.precoporcodigo[i]['preco'].replace(',', '.');
-          console.log (preco)
         return parseFloat(preco);
       }
     }
